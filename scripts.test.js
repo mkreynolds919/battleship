@@ -79,10 +79,12 @@ describe('Gameboard', () => {
             gameboard.placeShip(4, "e2", "h");
             expect(gameboard.receiveAttack("e2")).toBe(true);
             expect(gameboard.gameboard["e2"].hits).toBe(1);
+            expect(gameboard.hitSpaces[0]).toBe("e2");
         });
         test('Misses ship', () => {
             gameboard.placeShip(4, "h1", "v");
             expect(gameboard.receiveAttack("a1")).toBe(false);
+            expect(gameboard.missSpaces[0]).toBe("a1");
         });
     });
 })
