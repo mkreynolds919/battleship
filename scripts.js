@@ -1,6 +1,7 @@
 
 class Ship {
     constructor(length) {
+        if (length < 1) { throw new Error("Length must be at least 1"); }
         this.length = length;
         this.hits = 0;
     }
