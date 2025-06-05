@@ -41,13 +41,13 @@ describe('Ship', () => {
 
 describe('Gameboard', () => {
     let gameboard;
-    beforeAll(() => {
+    beforeEach(() => {
          gameboard = new Gameboard();
     });
     test('Init', () => {
         expect(gameboard.gameboard).toBeTruthy();
     });
-    describe('Place ship', () => {
+    describe('placeShip()', () => {
         test('Validates root', () => {
             expect(gameboard.rootIsValid("e4")).toBe(true);
             expect(gameboard.rootIsValid("a11")).toBe(false);
@@ -69,6 +69,20 @@ describe('Gameboard', () => {
             gameboard.placeShip(5, "j6", "v");
             expect(gameboard.gameboard["j6"].length).toBe(5);
             expect(gameboard.gameboard["f6"].length).toBe(5);
+        });
+    });
+    describe('receiveAttack()', () => {
+        test('Handles out-of-map coordinate', () => {
+            expect(gameboard.receiveAttack("q3")).toBeUndefined();
+        });
+        test('Adds hit to existing ship', () => {
+            gameboard.placeShip(4, "e2", "h");
+            expect(gameboard.receiveAttack("e2")).toBe(true);
+            expect(gameboard.gameboard["e2"].hits).toBe(1);
+        });
+        test('Misses ship', () => {
+            gameboard.placeShip(4, "h1", "v");
+            expect(gameboard.receiveAttack("a1")).toBe(false);
         });
     });
 })

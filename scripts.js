@@ -27,6 +27,7 @@ class Ship {
 class Gameboard {
     constructor() {
         this.gameboard = {};
+        this.misses = [];
     }
 
     placeShip(length, root, dir) {
@@ -72,6 +73,18 @@ class Gameboard {
             }
         }
         return true;
+    }
+
+    receiveAttack(coord) {
+        if (this.rootIsValid(coord)) {
+            if (this.gameboard[coord]) {
+                this.gameboard[coord].hit();
+                return true;
+            } else {
+                this.misses.push(coord);
+                return false;
+            }
+        }
     }
 }
 
