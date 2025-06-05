@@ -1,4 +1,4 @@
-import { Ship } from './scripts';
+import { Ship, Gameboard } from './scripts';
 
 describe('Ship', () => {
     let ship;
@@ -38,3 +38,37 @@ describe('Ship', () => {
         });
     });
 });
+
+describe('Gameboard', () => {
+    let gameboard;
+    beforeAll(() => {
+         gameboard = new Gameboard();
+    });
+    test('Init', () => {
+        expect(gameboard.gameboard).toBeTruthy();
+    });
+    describe('Place ship', () => {
+        test('Validates root', () => {
+            expect(gameboard.rootIsValid("e4")).toBe(true);
+            expect(gameboard.rootIsValid("a11")).toBe(false);
+        });
+        test('Validates direction', () => {
+            expect(gameboard.dirIsValid("h")).toBe(true);
+            expect(gameboard.dirIsValid("a")).toBe(false);
+        });
+        test('Validates ship fitting', () => {
+            expect(gameboard.shipCanFit(3, "a2", "h")).toBe(true);
+            expect(gameboard.shipCanFit(5, "b2", "v")).toBe(false);
+        });
+        test('Places ship horizontally', () => {
+            gameboard.placeShip(3, "e4", "h");
+            expect(gameboard.gameboard["e4"].length).toBe(3);
+            expect(gameboard.gameboard["e6"].length).toBe(3);
+        });
+        test('Places ship vertically', () => {
+            gameboard.placeShip(5, "j6", "v");
+            expect(gameboard.gameboard["j6"].length).toBe(5);
+            expect(gameboard.gameboard["f6"].length).toBe(5);
+        });
+    });
+})
