@@ -90,6 +90,15 @@ class Gameboard {
             }
         }
     }
+
+    allShipsSunk() {
+        for (const ship of this.ships) {
+            if (!ship.isSunk()) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
 
 export { Ship, Gameboard };
