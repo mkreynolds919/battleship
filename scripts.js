@@ -27,12 +27,15 @@ class Ship {
 class Gameboard {
     constructor() {
         this.gameboard = {};
-        this.misses = [];
+        this.missSpaces = [];
+        this.hitSpaces = [];
+        this.ships = [];
     }
 
     placeShip(length, root, dir) {
        if (this.rootIsValid(root) && this.dirIsValid(dir) && this.shipCanFit(length, root, dir)) {
             const ship = new Ship(length);
+            this.ships.push(ship);
             let char = root[0];
             let num = root.slice(1);
             for (let i = 0; i < length; i++) {
@@ -79,9 +82,10 @@ class Gameboard {
         if (this.rootIsValid(coord)) {
             if (this.gameboard[coord]) {
                 this.gameboard[coord].hit();
+                this.hitSpaces.push(coord);
                 return true;
             } else {
-                this.misses.push(coord);
+                this.missSpaces.push(coord);
                 return false;
             }
         }
