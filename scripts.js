@@ -33,7 +33,7 @@ class Gameboard {
     }
 
     placeShip(length, root, dir) {
-       if (this.rootIsValid(root) && this.dirIsValid(dir) && this.shipCanFit(length, root, dir)) {
+       if (this.rootIsValid(root) && this.dirIsValid(dir) && this.shipCanFit(length, root, dir) && this.notOccupied(length, root, dir)) {
             const ship = new Ship(length);
             this.ships.push(ship);
             let char = root[0];
@@ -73,6 +73,23 @@ class Gameboard {
         } else {
             if (root[0].charCodeAt(0) - length < "a".charCodeAt(0)) {
                 return false;
+            }
+        }
+        return true;
+    }
+
+    notOccupied(length, root, dir) {
+        let char = root[0];
+        let num = root.slice(1);
+        for (let i = 0; i < length; i++) {
+            if (this.gameboard[`${char}${num}`] !== undefined) {
+                return false;
+            } else {
+                if (dir === 'h') {
+                    num = String(parseInt(num) + 1);
+                } else {
+                    char = String.fromCharCode(char.charCodeAt(0) - 1);
+                }
             }
         }
         return true;

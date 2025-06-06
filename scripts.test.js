@@ -60,6 +60,10 @@ describe('Gameboard', () => {
             expect(gameboard.shipCanFit(3, "a2", "h")).toBe(true);
             expect(gameboard.shipCanFit(5, "b2", "v")).toBe(false);
         });
+        test('Validates occupied spaces', () => {
+            gameboard.placeShip(1, "a1", "h");
+            expect(gameboard.notOccupied(1, "a1", "v")).toBe(false);
+        });
         test('Places ship horizontally', () => {
             gameboard.placeShip(3, "e4", "h");
             expect(gameboard.gameboard["e4"].length).toBe(3);
