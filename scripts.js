@@ -98,11 +98,15 @@ class Gameboard {
     receiveAttack(coord) {
         if (this.rootIsValid(coord)) {
             if (this.gameboard[coord]) {
-                this.gameboard[coord].hit();
+                let ship = this.gameboard([coord]);
+                ship.hit();
                 this.hitSpaces.push(coord);
+                this.logHitMessage(ship, coord);
+                
                 return true;
             } else {
                 this.missSpaces.push(coord);
+                this.logMissMessage(coord);
                 return false;
             }
         }
@@ -115,6 +119,26 @@ class Gameboard {
             }
         }
         return true;
+    }
+
+    logHitMessage(ship, coord) {
+        if (this.allShipsSunk()) {
+            console.log("All ships have sunk! Game over!");
+        } else if (ship.isSunk()) {
+            console.log("Ship has been sunk!");
+        } else {
+            console.log(`${coord} is a hit!`);
+        }
+    }
+
+    logMissMessage(coord) {
+        console.log(`${coord} is a miss!`);
+    }
+}
+
+class Player {
+    constructor() {
+        this.gameboard = new Gameboard();
     }
 }
 
