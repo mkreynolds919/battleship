@@ -87,4 +87,12 @@ describe('Gameboard', () => {
             expect(gameboard.missSpaces[0]).toBe("a1");
         });
     });
+    test('Recognizes all ships being sunk', () => {
+        gameboard.placeShip(1, "e8", "h");
+        gameboard.placeShip(1, "j1", "v");
+        gameboard.receiveAttack("e8");
+        expect(gameboard.allShipsSunk()).toBe(false);
+        gameboard.receiveAttack("j1");
+        expect(gameboard.allShipsSunk()).toBe(true);
+    });
 })
