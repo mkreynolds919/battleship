@@ -1,3 +1,4 @@
+import DOM from "./dom.js";
 
 class Ship {
     constructor(length) {
@@ -25,11 +26,12 @@ class Ship {
 }
 
 class Gameboard {
-    constructor() {
+    constructor(grid) {
         this.gameboard = {};
         this.missSpaces = [];
         this.hitSpaces = [];
         this.ships = [];
+        this.grid = grid;
     }
 
     placeShip(length, root, dir) {
@@ -40,6 +42,7 @@ class Gameboard {
             let num = root.slice(1);
             for (let i = 0; i < length; i++) {
                 this.gameboard[`${char}${num}`] = ship;
+                DOM.placeShip(this.grid, `${char}${num}`);
                 if (dir === 'h') {
                     num = String(parseInt(num) + 1);
                 } else {
@@ -138,8 +141,8 @@ class Gameboard {
 
 class Player {
     constructor(gridID) {
-        this.gameboard = new Gameboard();
         this.grid = document.getElementById(gridID);
+        this.gameboard = new Gameboard(this.grid);
         if (gridID === "grid1") {
             this.name = "Player 1";
         } else {

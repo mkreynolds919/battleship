@@ -1,5 +1,5 @@
 
-export default class DOM {
+class DOM {
     static createGrid(grid) {
         grid.innerHTML = '';
         const letters = 'abcdefghij';
@@ -12,4 +12,11 @@ export default class DOM {
             }
         }
     }
+
+    static placeShip(grid, coord) {
+        const cell = document.getElementById(`${grid.id}-${coord}`);
+        cell.textContent = 'S';
+    }
 }
+
+export default DOM;
