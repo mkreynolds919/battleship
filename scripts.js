@@ -137,8 +137,14 @@ class Gameboard {
 }
 
 class Player {
-    constructor() {
+    constructor(gridID) {
         this.gameboard = new Gameboard();
+        this.grid = document.getElementById(gridID);
+        if (gridID === "grid1") {
+            this.name = "Player 1";
+        } else {
+            this.name = "Player 2";
+        }
     }
 }
 
