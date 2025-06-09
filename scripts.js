@@ -98,7 +98,7 @@ class Gameboard {
     receiveAttack(coord) {
         if (this.rootIsValid(coord)) {
             if (this.gameboard[coord]) {
-                let ship = this.gameboard([coord]);
+                let ship = this.gameboard[coord];
                 ship.hit();
                 this.hitSpaces.push(coord);
                 this.logHitMessage(ship, coord);
