@@ -7,7 +7,7 @@ export default class DOM {
             for (let c = 1; c <= 10; c++) {
                 const cell = document.createElement('div');
                 cell.className = 'cell';
-                cell.id = `${letters[r]}${c}`;
+                cell.id = `${grid.id}-${letters[r]}${c}`;
                 grid.appendChild(cell);
             }
         }
