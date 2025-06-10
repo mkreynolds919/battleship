@@ -1,6 +1,9 @@
 
 class DOM {
     static createGrid(player) {
+        const container = player.grid.parentElement;
+        container.insertBefore(this.createHeader(player), player.grid);
+        this.createHeader(player);
         const grid = player.grid;
         grid.innerHTML = '';
         const letters = 'abcdefghij';
@@ -41,6 +44,13 @@ class DOM {
     static missSpace(grid, coord) {
         const cell = document.getElementById(`${grid.id}-${coord}`);
         cell.textContent = 'O';
+    }
+
+    static createHeader(player) {
+        const header = document.createElement('div');
+        header.className = 'name-header';
+        header.textContent = `${player.name}`;
+        return header;
     }
 }
 

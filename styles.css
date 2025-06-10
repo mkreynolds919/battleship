@@ -24,3 +24,12 @@ body {
 .header {
       margin: auto;
 }
+
+.name-header {
+      text-align: center;
+      font-size: 20px;
+}
+
+.player-container {
+      margin: auto;
+}
