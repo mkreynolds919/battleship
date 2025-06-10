@@ -17,6 +17,16 @@ class DOM {
         const cell = document.getElementById(`${grid.id}-${coord}`);
         cell.textContent = 'S';
     }
+
+    static hitSpace(grid, coord) {
+        const cell = document.getElementById(`${grid.id}-${coord}`);
+        cell.textContent = 'X';
+    }
+
+    static missSpace(grid, coord) {
+        const cell = document.getElementById(`${grid.id}-${coord}`);
+        cell.textContent = 'O';
+    }
 }
 
 export default DOM;

@@ -105,11 +105,12 @@ class Gameboard {
                 ship.hit();
                 this.hitSpaces.push(coord);
                 this.logHitMessage(ship, coord);
-                
+                DOM.hitSpace(this.grid, coord);
                 return true;
             } else {
                 this.missSpaces.push(coord);
                 this.logMissMessage(coord);
+                DOM.missSpace(this.grid, coord);
                 return false;
             }
         }
