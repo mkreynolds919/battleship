@@ -8,10 +8,5 @@ const player2 = new Player("grid2");
 DOM.createGrid(player1.grid);
 DOM.createGrid(player2.grid);
 
-player1.gameboard.placeShip(3, "a2", "h");
-player2.gameboard.placeShip(5, "j10", "v");
-player1.gameboard.placeShip(2, "e6", "v");
-player1.gameboard.receiveAttack("j8");
-player2.gameboard.receiveAttack("f10");
 
 

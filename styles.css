@@ -8,8 +8,8 @@ body {
 
 .grid {
       display: grid;
-      grid-template-columns: repeat(10, 40px);
-      grid-template-rows: repeat(10, 40px);
+      grid-template-columns: repeat(11, 40px);
+      grid-template-rows: repeat(11, 40px);
       gap: 2px;
 }
 .cell {
@@ -18,4 +18,9 @@ body {
       background-color: lightgray;
       border: 1px solid #ccc;
       box-sizing: border-box;
+      margin: auto;
+}
+
+.header {
+      margin: auto;
 }
