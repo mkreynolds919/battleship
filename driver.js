@@ -9,4 +9,3 @@ DOM.createGrid(player1);
 DOM.createGrid(player2);
 
 
-

@@ -18,7 +18,9 @@ body {
       background-color: lightgray;
       border: 1px solid #ccc;
       box-sizing: border-box;
-      margin: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 }
 
 .header {
