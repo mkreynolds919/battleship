@@ -1,6 +1,7 @@
 
 class DOM {
-    static createGrid(grid) {
+    static createGrid(player) {
+        const grid = player.grid;
         grid.innerHTML = '';
         const letters = 'abcdefghij';
         for (let r = 0; r < 11; r++) {
