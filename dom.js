@@ -24,6 +24,7 @@ class DOM {
             grid.appendChild(cell);
             for (let c = 1; c <= 10; c++) {
                 const cell = document.createElement('div');
+                cell.addEventListener('click', () => player.gameboard.receiveAttack(`${letters[r]}${c}`));
                 cell.className = 'cell';
                 cell.id = `${grid.id}-${letters[r]}${c}`;
                 grid.appendChild(cell);
