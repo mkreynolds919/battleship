@@ -106,11 +106,13 @@ class Gameboard {
                 this.hitSpaces.push(coord);
                 this.logHitMessage(ship, coord);
                 DOM.hitSpace(this.grid, coord);
+                GameController.switchTurn();
                 return true;
             } else {
                 this.missSpaces.push(coord);
                 this.logMissMessage(coord);
                 DOM.missSpace(this.grid, coord);
+                GameController.switchTurn();
                 return false;
             }
         }
@@ -152,5 +154,18 @@ class Player {
     }
 }
 
-export { Ship, Gameboard, Player };
+class GameController {
+    static initialize(player1, player2) {
+        this.player1 = player1;
+        this.player2 = player2;
+        this.currentPlayer = player1;
+        this.opponent = player2;
+    }
+
+    static switchTurn() {
+        [this.currentPlayer, this.opponent] = [this.opponent, this.currentPlayer];
+    }
+}
+
+export { Ship, Gameboard, Player, GameController };
 
