@@ -9,4 +9,7 @@ GameController.initialize(player1, player2);
 DOM.createGrid(player1);
 DOM.createGrid(player2);
 
+player1.randomSetUp();
+player2.randomSetUp();
+
 

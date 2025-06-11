@@ -49,6 +49,8 @@ class Gameboard {
                     char = String.fromCharCode(char.charCodeAt(0) - 1);
                 }
             }
+       } else {
+            return false;
        } 
     }
 
@@ -150,6 +152,24 @@ class Player {
             this.name = "Player 1";
         } else {
             this.name = "Player 2";
+        }
+    }
+
+    randomSetUp() {
+        const letters = 'abcdefghij';
+        const ships = [2, 3, 3, 4, 5];
+        const directions = 'hv';
+        for (const ship of ships) {
+            let randChar = letters[(Math.floor(Math.random() * 10))];
+            let randNum = Math.floor(Math.random() * 10) + 1;
+            let randDir = directions[Math.floor(Math.random() * 2)];
+            let result = this.gameboard.placeShip(ship, `${randChar}${randNum}`, randDir);
+            while(result == false) {
+                randChar = letters[(Math.floor(Math.random() * 10))];
+                randNum = Math.floor(Math.random() * 10) + 1;
+                randDir = directions[Math.floor(Math.random() * 2)];
+                result = this.gameboard.placeShip(ship, `${randChar}${randNum}`, randDir);
+            }
         }
     }
 }
