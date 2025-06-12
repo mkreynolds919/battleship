@@ -192,6 +192,9 @@ class GameController {
     }
 
     static switchTurn() {
+        if (this.currentPlayer.gameboard.allShipsSunk()) {
+            this.initialize(this.player1, this.player2);
+        }
         DOM.hideShips(this.opponent);
         DOM.revealShips(this.currentPlayer);
         [this.currentPlayer, this.opponent] = [this.opponent, this.currentPlayer];

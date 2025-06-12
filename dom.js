@@ -98,6 +98,18 @@ class DOM {
         });
         return switchTurn;
     }
+
+    static clearBoard(player) {
+        player.gameboard.gameboard = {};
+        for (const key in player.gameboard.missSpaces) {
+            const space = document.getElementById(`${player.grid.id}-${key}`);
+            space.textContent = '';
+        }
+        for (const key in player.gameboard.hitSpaces) {
+            const space = document.getElementById(`${player.grid.id}-${key}`);
+            space.textContent = '';
+        }
+    }
 }
 
 export default DOM;
