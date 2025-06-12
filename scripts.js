@@ -108,13 +108,15 @@ class Gameboard {
                 this.hitSpaces.push(coord);
                 this.logHitMessage(ship, coord);
                 DOM.hitSpace(this.grid, coord);
-                GameController.switchTurn();
+                DOM.hideShips(GameController.opponent);
+                document.getElementById('game-controller').appendChild(DOM.createSwitchTurnButton());
                 return true;
             } else {
                 this.missSpaces.push(coord);
                 this.logMissMessage(coord);
                 DOM.missSpace(this.grid, coord);
-                GameController.switchTurn();
+                DOM.hideShips(GameController.opponent);
+                document.getElementById('game-controller').appendChild(DOM.createSwitchTurnButton());
                 return false;
             }
         }

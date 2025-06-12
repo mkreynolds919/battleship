@@ -87,6 +87,17 @@ class DOM {
         });
         return start;
     }
+
+    static createSwitchTurnButton() {
+        const switchTurn = document.createElement('button');
+        switchTurn.textContent = 'Switch Turn';
+        switchTurn.id = 'switch-turn-button';
+        switchTurn.addEventListener('click', () => {
+            GameController.switchTurn();
+            switchTurn.remove();
+        });
+        return switchTurn;
+    }
 }
 
 export default DOM;
