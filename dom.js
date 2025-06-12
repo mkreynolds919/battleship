@@ -67,6 +67,15 @@ class DOM {
             }
         }
     }
+
+    static revealShips(player) {
+        for (const key in player.gameboard.gameboard) {
+            const space = document.getElementById(`${player.grid.id}-${key}`);
+            if (space.textContent == '') {
+                space.textContent = player.gameboard.gameboard[key].length;
+            }
+        }
+    }
 }
 
 export default DOM;

@@ -184,6 +184,7 @@ class GameController {
 
     static switchTurn() {
         DOM.hideShips(this.currentPlayer);
+        DOM.revealShips(this.opponent);
         [this.currentPlayer, this.opponent] = [this.opponent, this.currentPlayer];
     }
 }
