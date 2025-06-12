@@ -37,9 +37,9 @@ class DOM {
         }
     }
 
-    static placeShip(grid, coord) {
+    static placeShip(grid, coord, length) {
         const cell = document.getElementById(`${grid.id}-${coord}`);
-        cell.textContent = 'S';
+        cell.textContent = length;
     }
 
     static hitSpace(grid, coord) {

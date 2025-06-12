@@ -42,7 +42,7 @@ class Gameboard {
             let num = root.slice(1);
             for (let i = 0; i < length; i++) {
                 this.gameboard[`${char}${num}`] = ship;
-                DOM.placeShip(this.grid, `${char}${num}`);
+                DOM.placeShip(this.grid, `${char}${num}`, length);
                 if (dir === 'h') {
                     num = String(parseInt(num) + 1);
                 } else {
