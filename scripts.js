@@ -178,13 +178,13 @@ class GameController {
     static initialize(player1, player2) {
         this.player1 = player1;
         this.player2 = player2;
-        this.currentPlayer = player1;
-        this.opponent = player2;
+        this.currentPlayer = player2;
+        this.opponent = player1;
     }
 
     static switchTurn() {
-        DOM.hideShips(this.currentPlayer);
-        DOM.revealShips(this.opponent);
+        DOM.hideShips(this.opponent);
+        DOM.revealShips(this.currentPlayer);
         [this.currentPlayer, this.opponent] = [this.opponent, this.currentPlayer];
     }
 }
