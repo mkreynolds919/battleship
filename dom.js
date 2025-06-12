@@ -58,6 +58,15 @@ class DOM {
         header.textContent = `${player.name}`;
         return header;
     }
+
+    static hideShips(player) {
+        for (const key in player.gameboard.gameboard) {
+            const space = document.getElementById(`${player.grid.id}-${key}`);
+            if (space.textContent !== 'X' && space.textContent !== 'O') {
+                space.textContent = '';
+            }
+        }
+    }
 }
 
 export default DOM;
