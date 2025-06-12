@@ -76,6 +76,17 @@ class DOM {
             }
         }
     }
+
+    static createStartButton() {
+        const start = document.createElement('button');
+        start.textContent = "Start Game";
+        start.id = "start-button";
+        start.addEventListener('click', () => {
+            DOM.revealShips(GameController.opponent);
+            start.remove();
+        });
+        return start;
+    }
 }
 
 export default DOM;

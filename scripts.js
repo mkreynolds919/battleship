@@ -180,6 +180,11 @@ class GameController {
         this.player2 = player2;
         this.currentPlayer = player2;
         this.opponent = player1;
+        player1.randomSetUp();
+        player2.randomSetUp();
+        DOM.hideShips(player1);
+        DOM.hideShips(player2);
+        document.getElementById('game-controller').appendChild(DOM.createStartButton());
     }
 
     static switchTurn() {

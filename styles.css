@@ -2,6 +2,7 @@
 body {
     display: flex;
     gap: 40px;
+    align-items: center;
 }
 
 
@@ -34,4 +35,8 @@ body {
 
 .player-container {
       margin: auto;
+}
+
+#start-button {
+      
 }
