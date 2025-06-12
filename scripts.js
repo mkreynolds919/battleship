@@ -132,17 +132,19 @@ class Gameboard {
     }
 
     logHitMessage(ship, coord) {
+        const log = document.getElementById('game-log');
         if (this.allShipsSunk()) {
-            console.log("All ships have sunk! Game over!");
+            log.textContent = "All ships have sunk! Game over!";
         } else if (ship.isSunk()) {
-            console.log("Ship has been sunk!");
+            log.textContent = "Ship has been sunk!";
         } else {
-            console.log(`${coord} is a hit!`);
+            log.textContent = `${coord} is a hit!`;
         }
     }
 
     logMissMessage(coord) {
-        console.log(`${coord} is a miss!`);
+        const log = document.getElementById('game-log');
+        log.textContent = `${coord} is a miss!`;
     }
 }
 
@@ -193,6 +195,7 @@ class GameController {
         DOM.hideShips(this.opponent);
         DOM.revealShips(this.currentPlayer);
         [this.currentPlayer, this.opponent] = [this.opponent, this.currentPlayer];
+        document.getElementById('game-log').textContent = '';
     }
 }
 
